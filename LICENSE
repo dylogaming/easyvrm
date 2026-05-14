@@ -1,0 +1,22 @@
+Copyright (c) 2026 DYLO Gaming LLC. All Rights Reserved.
+
+Easy VRM is proprietary software distributed under a commercial license. The
+documentation in this repository is published for the convenience of licensed
+users of the Easy VRM plugin.
+
+No part of the plugin or its documentation may be copied, modified, sublicensed,
+redistributed, or used to create a derivative product without prior written
+permission from DYLO Gaming LLC.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE
+LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+VRM4U, bundled with the Easy VRM plugin and installed as a sibling plugin on
+first launch, is the work of Haruyoshi Yamamoto (ruyo) and is distributed under
+its own MIT license, included with the bundled payload.
+
+For licensing inquiries, contact dylogamingofficial@gmail.com.
