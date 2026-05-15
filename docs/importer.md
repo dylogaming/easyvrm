@@ -6,9 +6,9 @@ The Easy VRM importer wraps VRM4U's asset importer with a quality of life panel 
 
 Three ways:
 
-- Click the **Easy VRM** button on the main editor toolbar.
-- Use **Window** to **Easy VRM**.
-- Right click a folder in the Content Browser and choose **Import VRM Here**. This opens the panel with the destination prefilled.
+- Click the **Easy VRM** button on the main editor toolbar (in the Play toolbar section).
+- Use **Window** to **Tools** to **Easy VRM**.
+- Right click a folder in the Content Browser and choose **Import VRM here...**. This opens the panel with the destination prefilled.
 
 The panel is dockable. Drag the tab to dock it next to the Content Browser, Details, or anywhere else.
 
@@ -16,34 +16,36 @@ The panel is dockable. Drag the tab to dock it next to the Content Browser, Deta
 
 ### 1. Pick a source VRM file
 
-Three ways:
+The **Source VRM file** row offers three ways to pick a file:
 
 - **Drag and drop** a `.vrm` file from File Explorer onto the panel anywhere.
-- Click **Browse** and pick a `.vrm` file from disk.
-- Use the **Source** dropdown to pick from VRM files in your last used folder. The dropdown is rebuilt automatically when you change folders; click the refresh button next to **Browse** to rescan manually.
+- Click **Browse...** and pick a `.vrm` file from disk. The folder you pick becomes the new library.
+- Use the source dropdown to pick from `.vrm` files already in the library folder. Click **Refresh** next to **Browse...** to rescan after you add new files to that folder.
 
-The panel remembers your last 8 imported files in the **Recent** menu (the small clock icon next to the source field).
+The panel remembers your last 8 imported files in the **Recent** menu, sitting to the right of the source dropdown.
 
 A thumbnail of the avatar appears once a valid `.vrm` is selected.
 
 ### 2. Pick a destination folder
 
-Click the destination chooser to pick a Content Browser folder. The default is `/Game/Characters`. The panel remembers your last destination across editor restarts.
+The **Import to:** row holds the destination path. The text box is read only; click the `...` button to open a folder picker. The default is `/Game/Characters`. The panel remembers your last destination across editor restarts.
 
 You can also click **Use Current Folder** to set the destination to whatever folder is selected in the Content Browser.
 
 ### 3. Choose a folder name
 
-The **Folder name** field defaults to the `.vrm` file's base name with spaces and special characters stripped. This name is used:
+To the right of the destination path is a `/` separator and a **subfolder name** text box. It defaults to the `.vrm` file's base name with spaces and special characters stripped. This name is used:
 
 - as the subfolder under the destination,
 - as the suffix on all generated assets (`SK_<Name>`, `SKEL_<Name>`, `RTG_<Name>`, etc.).
 
 Final destination: `<Destination>/<FolderName>/`.
 
-### 4. Optional flags
+### 4. Advanced settings
 
-- **Generate UE5 Mannequin renamed mesh**: when on, VRM4U also produces a second SkeletalMesh with bones renamed to match the UE5 Mannequin skeleton (`pelvis`, `spine_01`, etc.). Useful if you want to plug a VRM directly into an animation system built around the Mannequin skeleton. Default on.
+To the right of the **Import to:** label is a small gear icon (⚙). Click it to open the advanced settings popup, which exposes:
+
+- **Generate UE5 Mannequin-renamed SkeletalMesh (for retargeting)**: when on, VRM4U also produces a second SkeletalMesh with bones renamed to match the UE5 Mannequin skeleton (`pelvis`, `spine_01`, etc.). The original VRM SkeletalMesh is still produced. Useful for retargeting UE5 animations onto VRoid avatars. Default on.
 
 ### 5. Import
 
@@ -97,5 +99,6 @@ The panel remembers, per project user:
 - Generate Mannequin renamed mesh toggle.
 - Recent imports list (up to 8).
 - Section expand and collapse state for every collapsible region.
+- Spring bone physics master toggle, sub toggles, and strength values.
 
 These are stored in `Saved/Config/<Platform>/EditorPerProjectUserSettings.ini` under the `[EasyVRM]` section.

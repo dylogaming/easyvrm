@@ -33,11 +33,12 @@ Each body group is a collapsible category with 14 MToon parameters:
 
 ### Open the panel on an existing import
 
-1. With the importer panel open, set the **Source VRM SkeletalMesh** slot (in the **Apply to Character Blueprint** section) to the imported `SK_<Name>`. The Material Tweaks section reads from this asset.
+1. With the importer panel open, set the **Source VRM Mesh** slot (in the **Apply to Character Blueprint** section) to the imported `SK_<Name>`. The Material Tweaks section reads from this asset.
 2. Expand **VRM Material Tweaks**.
-3. Click **Read From VRM**. The tweak fields populate with the current values on disk.
 
-If a per VRM preset exists at `<VrmFolder>/EasyVRM_MatPreset.json`, it auto loads on selection. The first time the panel reads from a VRM it also snapshots the on disk state as the **original baseline** (used by **Reset to Original**).
+The tweak fields auto populate from the MICs on disk the moment you set the Source VRM Mesh slot, so you can start editing immediately. The first time the panel reads from a VRM, it also snapshots the on disk state as the **original baseline** used by **Reset to Original**.
+
+If you ever need to re sync the panel against disk manually (after editing MICs outside Easy VRM, for example), click **Read From VRM**.
 
 ### Make changes
 
@@ -57,31 +58,18 @@ After Apply, the persona viewport stays overlaid with the in memory tweak state,
 
 ### Reset
 
-Three reset paths, all under the Material Tweaks section:
+Two reset buttons sit in the Material Tweaks top button row:
 
-- **Reset**: revert the in memory tweak fields to engine defaults (white, 0.9 shade sharpness, etc.). Does not touch disk.
-- **Reset to Original**: revert the in memory tweak fields to the snapshot captured the first time you read this VRM from disk. The "original" snapshot is preserved across sessions in the auto saved per VRM preset.
-- Click **Apply All** after either reset to write the new state to disk.
+- **Reset Defaults**: revert the in memory tweak fields to plugin defaults (white, 0.9 shade sharpness, etc.). Does not touch disk. Click **Apply All** afterwards to commit.
+- **Reset to Original**: revert the in memory tweak fields to the snapshot captured the first time the panel read this VRM from disk. Click **Apply All** afterwards to commit.
 
-## Presets
+The original snapshot is captured automatically on the first source select after import; you do not need to opt in.
 
-### Per VRM preset (automatic)
+## Repair Outfit
 
-Click **Save Per VRM**. Writes `EasyVRM_MatPreset.json` next to the VRM source file (the `.vrm` on disk, not the imported folder). The next time you select that VRM in the importer, the preset auto loads.
+The **Repair Outfit** button in the Material Tweaks top button row re runs the outfit color repair pass (the same pass that runs automatically at import time). Use it if you swapped shaders, hand edited MIC colors, or imported with an older Easy VRM version and your sister cloth pieces are showing white where they should be tinted.
 
-Click **Load Per VRM** to manually re read it without selecting the VRM again.
-
-### Named presets (library)
-
-Click **Save As Named** to save the current tweak state under a chosen name (no file extension required). The preset is saved into the project's `Saved/EasyVRM/Presets/` folder.
-
-Click **Load Named Preset** to open a menu of every named preset in the library. Pick one to apply.
-
-Named presets are project local. Copy the `Saved/EasyVRM/Presets/` folder into a new project to share them.
-
-## Eye color quick pick
-
-The **Eye Color** color swatch above the tweak section is a shortcut that drives `Eyes.LitColor`. Click it to open the color picker, drag to live preview, release to commit. Equivalent to expanding **Eyes** in the right column and editing **Lit Color** there.
+It only acts on sister materials within the same cloth group (Tops, Bottoms, Shoes, Onepiece kept separate). Materials with their `mtoon_Color` already set to anything non white are not touched.
 
 ## Categories merge note (advanced)
 

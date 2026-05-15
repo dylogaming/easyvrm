@@ -8,8 +8,8 @@ Easy VRM brings VRoid avatars into Unreal as production-ready Skeletal Meshes wi
 
 - **Import**: drag and drop `.vrm` files (or pick from disk), choose a destination folder, click Import. Produces SkeletalMesh, Skeleton, IK Rig, IK Retargeter, MToon material instances, VrmMetaObject, and an Animation Blueprint wired for UE5 Mannequin retarget.
 - **Material Tweaks**: per body group (Skin, Face Details, Eyes, Hair, Clothing, All Materials) sliders and color pickers for every MToon parameter that matters. Live persona preview. Save and load named presets.
-- **Style presets**: curated MToon parameter sets (Stylized Anime, Painterly, PBR Lookalike, etc.) that change the look without overwriting per character colors.
-- **Shader swaps**: swap MToon for one of the other VRM4U parent materials (PBR, Unlit, etc.) without breaking references.
+- **Style presets**: five curated MToon parameter sets (Hard Cel, Soft Cel, Painterly, Realistic, Idol / Glow) that change the look without overwriting per character colors.
+- **Shader swaps**: swap MToon for one of the other VRM4U parent materials (MToon + SSS, Realistic PBR, Realistic + Subsurface, Unlit) without breaking references.
 - **Apply to Character Blueprint**: in one click, hook an imported VRM onto an existing UE5 Character Blueprint with retargeted animation, parented to the inherited Mannequin Mesh and visibility configured.
 - **Spring bone physics**: per group toggles and strength sliders for hair, breast, and clothing physics. Updates live during PIE.
 - **Toe retarget fix**: auto-applies the standard fix for the UE5.7 IK Rig toe wobble issue on every import.

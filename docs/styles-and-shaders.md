@@ -9,7 +9,17 @@ Both are in the Material Tweaks section of the Easy VRM panel.
 
 ## Style Presets
 
-The Styles dropdown lists curated parameter sets. Pick one to apply it to the in memory tweak state. Click **Apply All** to write the new state to disk.
+The **Style:** dropdown at the top of the Material Tweaks section lists five curated parameter sets:
+
+| Name | Look |
+| ---- | ---- |
+| **Hard Cel** | Hard shadow line, thick outline, tight rim. Max anime. |
+| **Soft Cel** | Soft shadow gradient, medium outline. Gentle anime. |
+| **Painterly** | No outline, smooth gradient, broad rim glow. |
+| **Realistic** | Flat smooth shading, no outline, subtle rim. Closest to PBR within MToon. |
+| **Idol / Glow** | Stage lighting: soft shade, intense halo rim. |
+
+Pick one to apply it to the in memory tweak state. Click **Apply All** to write the new state to disk.
 
 What gets touched by a style:
 
@@ -29,7 +39,7 @@ What does **not** get touched:
 - `mtoon_EmissionColor`
 - `NormalStrength`, `ReceiveShadow`, `RimLift`
 
-This separation keeps a character's authored palette intact while letting you swap stylistic looks freely. Apply Stylized Anime to a hero, then to a villain, and each keeps their own colors.
+This separation keeps a character's authored palette intact while letting you swap stylistic looks freely. Apply Hard Cel to a hero, then to a villain, and each keeps their own colors.
 
 ### Cycling with arrow keys
 
@@ -39,12 +49,15 @@ Keyboard focus moves on the first click outside the panel; pick a style again to
 
 ## Shader Swaps
 
-The Shader dropdown lists VRM4U parent materials worth swapping in:
+The **Shader:** dropdown next to the Style dropdown lists five VRM4U parent materials worth swapping in:
 
-- **MToon** (the default toon look that VRM4U imports).
-- **PBR** variants (physical based, looks closer to UE5's stock shading).
-- **Unlit** (no lighting, useful for stylized rigs and UI characters).
-- Other curated VRM4U parents.
+| Name | Look |
+| ---- | ---- |
+| **MToon (default)** | Standard MToon cel shading. Full `mtoon_*` parameter set. |
+| **MToon + SSS** | MToon with subsurface scattering for softer, skin like translucency. |
+| **Realistic (PBR)** | UE standard PBR shading. Removes cel boundaries. Some MToon overrides may not carry over. |
+| **Realistic + Subsurface** | PBR with subsurface scattering. Realistic look with soft skin shading. |
+| **Unlit (flat)** | Flat shading, no lighting math. Stylized / dollhouse look. |
 
 Pick one and click the menu item to perform the swap. The swap:
 
@@ -69,8 +82,6 @@ The on screen badge tracks the **style**. Shader changes do not appear in the ba
 
 To go back to VRM4U's default MToon look without uninstalling anything:
 
-1. Open the Material Tweaks section and click **Reset to Original**.
-2. Use the Shader dropdown to swap back to **MToon** (whichever variant the avatar came in with).
-3. Click **Apply All**.
-
-If you saved a per VRM preset before any tweaks, **Load Per VRM** restores the original snapshot in one click.
+1. Open the Material Tweaks section and use the Shader dropdown to swap back to **MToon (default)**.
+2. Click **Reset to Original**. The tweak fields revert to the snapshot the panel captured the first time it read this VRM.
+3. Click **Apply All** to write that state to disk.

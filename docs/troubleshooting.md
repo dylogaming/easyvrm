@@ -50,11 +50,14 @@ Or re import the VRM, which triggers the auto fix.
 
 ## Material Tweaks panel is empty after selecting a VRM
 
-**Symptom**: You set the Source VRM SkeletalMesh slot, but the Material Tweaks fields are all default values.
+**Symptom**: You set the Source VRM Mesh slot, but the Material Tweaks fields all sit at plugin defaults (white, 0.9 shade sharpness, etc.).
 
-**Cause**: Easy VRM has not read the current MIC values from disk yet.
+**Cause**: The panel reads from disk automatically when you change the source slot, so an empty panel usually means the source slot was rejected (wrong asset class, or the asset's package path does not look like a VRM import folder).
 
-**Fix**: Click **Read From VRM**. The fields populate from the MICs in the VRM's folder. If a per VRM preset exists at `<VrmFolder>/EasyVRM_MatPreset.json`, it auto loads on selection.
+**Fix**:
+
+1. Confirm the slot is pointing at an `SK_<Name>` asset that was produced by Easy VRM (or VRM4U with Easy VRM's naming convention). The slot is filtered to `SkeletalMesh`, but a hand authored mesh in a non standard folder will produce an empty read.
+2. Click **Read From VRM** to force a manual sync. If the fields still don't populate, the VRM folder contains no MICs Easy VRM recognises; re import the VRM and try again.
 
 ## Apply to Character BP fails with "Cannot find inherited Mesh component"
 

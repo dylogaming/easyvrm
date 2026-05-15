@@ -10,14 +10,18 @@ The Apply to Character Blueprint section lets you hook an imported VRM avatar on
 
 ## Setup
 
-The section lives in the Easy VRM panel below the importer. It has two asset slots and one button:
+The section lives in the Easy VRM panel below the importer. The left column holds two asset slots and the Apply / Remove buttons; the right column holds the spring bone physics controls (see [physics.md](physics.md)).
+
+Left column layout:
 
 ```
-[ Source VRM SkeletalMesh slot ] | [ Target Character BP slot ]   [ Apply ]
+[ Source VRM Mesh slot ]
+[ Target Character Blueprint slot ]
+[ Apply ]   [ Remove ]
 ```
 
-1. **Source VRM SkeletalMesh**: pick `SK_<Name>` from a previously imported VRM. The panel auto fills this from your last import; you can change it to any other `SK_<Name>` in the project.
-2. **Target Character BP**: pick the Character Blueprint you want to apply the VRM onto. Persists across editor restarts so subsequent applies on the same BP are one click.
+1. **Source VRM Mesh**: pick `SK_<Name>` from a previously imported VRM. The panel auto fills this from your last import; you can change it to any other `SK_<Name>` in the project.
+2. **Target Character Blueprint**: pick the Character Blueprint you want to apply the VRM onto. Must inherit `ACharacter`. Persists across editor restarts so subsequent applies on the same BP are one click.
 
 Click **Apply**.
 

@@ -15,15 +15,31 @@ Easy VRM works with both layers:
 
 ## Controls
 
-The Spring Bone Physics row in the panel has three toggles and three sliders:
+The spring bone physics block lives in the right column of the **Apply to Character Blueprint** section. It has a master toggle, three sub toggles, and three sliders.
 
-| Toggle | Strength Slider | What it controls |
-| ------ | -------------- | ---------------- |
-| **Breast Physics** | Breast Strength | Spring chains rooted at any bone whose name contains `Bust`. |
-| **Hair Physics** | Hair Strength | Spring chains rooted at any bone whose name contains `Hair`. |
-| **Clothing Physics** | Clothing Strength | Every other spring chain (`J_Sec_*`, cloth bones, accessories, etc.). |
+### Master toggle
 
-Strength is a multiplier against the values VRoid Studio authored. `1.0` is the avatar's intended amount, `0.5` is half, `2.0` is double.
+**Enable VRM Physics** at the top of the block is a tri state checkbox:
+
+- **Checked** when all three sub groups (Breast, Hair, Clothing) are enabled.
+- **Unchecked** when all three are disabled.
+- **Indeterminate** when some are on and some are off.
+
+Clicking it sets all three sub toggles to the same state. The small arrow icon to its right resets every toggle off and every strength back to `1.0`.
+
+### Sub toggles and strength sliders
+
+| Sub toggle | Strength slider | What it controls |
+| ---------- | --------------- | ---------------- |
+| **Breast** | 0.0 to 2.0 | Spring chains rooted at any bone whose name contains `Bust`. |
+| **Hair** | 0.0 to 2.0 | Spring chains rooted at any bone whose name contains `Hair`. |
+| **Clothing** | 0.0 to 2.0 | Every other spring chain (`J_Sec_*`, cloth bones, accessories, etc.). |
+
+Strength is a multiplier against the values VRoid Studio authored. `1.0` is the avatar's intended amount, `0.5` is half, `2.0` is double. The slider snaps in `0.05` increments.
+
+Each slider has a small reset arrow to its right that returns just that group's strength to `1.0`.
+
+**Auto enable on slider drag**: moving a strength slider automatically turns on its sub toggle. Otherwise it would be easy to leave a group disabled with a non default strength and wonder why the change has no effect.
 
 ## How filtering works
 
@@ -59,5 +75,5 @@ Subsequent changes to the toggles and sliders apply live as described above; you
 
 - The categorization is name based (substring match on `Bust`, `Hair`, plus a default bucket). Custom VRoid models with non standard bone names may end up classified as Clothing. This is correct in practice for VRoid Studio exports, since cloth chains use `J_Sec_*` names that don't match the Breast or Hair patterns.
 - The original backup asset (`VrmMetaObject_<Name>_OriginalBackup`) is preserved permanently. Keep it; it's the only way to reverse a filter that's been saved to disk.
-- Strength multipliers are clamped at 0 to 5 in the UI. Anything above 2 tends to look like a cartoon spring, which may or may not be what you want.
+- Strength multipliers are clamped at 0 to 2 in the UI, with `0.05` step granularity. The slider hits its ceiling at 2x VRoid amount.
 - The `VrmSpringBone` node in our generated AnimBP currently uses the **max** of all enabled groups' strength multipliers as a global aggregate. Per group multipliers fully apply through the meta filter. If precise per group control matters, keep multipliers similar and tune the meta filter strengths.
