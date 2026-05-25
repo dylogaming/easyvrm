@@ -15,8 +15,7 @@ LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF
 CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-VRM4U, bundled with the Easy VRM plugin and installed as a sibling plugin on
-first launch, is the work of Haruyoshi Yamamoto (ruyo) and is distributed under
-its own MIT license, included with the bundled payload.
+VRM4U, the required dependency for Easy VRM (available free on Fab as DYLO's
+VRM4U), is the work of Haruyoshi Yamamoto (ruyo). Upstream: https://github.com/ruyo/VRM4U
 
 For licensing inquiries, contact dylogamingofficial@gmail.com.

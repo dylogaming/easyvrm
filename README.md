@@ -14,13 +14,22 @@ Easy VRM brings VRoid avatars into Unreal as production-ready Skeletal Meshes wi
 - **Spring bone physics**: per group toggles and strength sliders for hair, breast, and clothing physics. Updates live during PIE.
 - **Toe retarget fix**: auto-applies the standard fix for the UE5.7 IK Rig toe wobble issue on every import.
 - **Outfit color repair**: post-import pass that propagates linked cloth tints from VRoid Studio's color linking feature, which the `.vrm` format does not preserve.
-- **Bundled VRM4U**: ships with VRM4U inside the plugin and installs it as a sibling plugin on first launch. No separate install step.
+
+## Requirements
+
+Easy VRM is an editor layer on top of **VRM4U**, which does the actual `.vrm` parsing and runtime loading. VRM4U must be installed in the same project. Get it free on Fab as **DYLO's VRM4U**.
+
+If VRM4U is not installed, Easy VRM shows a banner reading "DYLO's VRM4U is required but not installed" and its tools stay disabled until you add it.
 
 ## Installation
 
-See [docs/install.md](docs/install.md) for the full first launch flow, including the cold install of VRM4U.
+See [docs/install.md](docs/install.md) for full details.
 
-Short version: enable Easy VRM in your project's Plugins window, restart, and click Install when prompted to lay down VRM4U. Restart once more and you're ready.
+Short version:
+1. Install **DYLO's VRM4U** (free) from Fab into your project.
+2. Install **Easy VRM** from Fab into the same project.
+3. Enable both in the project's Plugins window if they are not already enabled, and restart the editor.
+4. The **Easy VRM** button appears on the main toolbar.
 
 ## Quick start
 
@@ -37,7 +46,7 @@ To attach it to a playable character, see [docs/apply-to-character-bp.md](docs/a
 
 | Topic | File |
 | ----- | ---- |
-| Installation and first launch | [docs/install.md](docs/install.md) |
+| Installation | [docs/install.md](docs/install.md) |
 | Importing a VRM avatar | [docs/importer.md](docs/importer.md) |
 | Material Tweaks panel | [docs/material-tweaks.md](docs/material-tweaks.md) |
 | Style presets and shader swaps | [docs/styles-and-shaders.md](docs/styles-and-shaders.md) |
@@ -57,7 +66,7 @@ For bug reports and feature requests, email dylogamingofficial@gmail.com.
 
 ## Credits
 
-- VRM4U by Haruyoshi Yamamoto (ruyo). MIT license. Bundled and installed automatically.
+- VRM4U by Haruyoshi Yamamoto (ruyo). Required dependency, available free on Fab as DYLO's VRM4U. Upstream: https://github.com/ruyo/VRM4U
 - Easy VRM by DYLO Gaming.
 
 ## License

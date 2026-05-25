@@ -1,31 +1,29 @@
 # Troubleshooting
 
-## VRM4U did not install
+## VRM4U not detected
 
-**Symptom**: After enabling Easy VRM and restarting the editor, the toolbar shows no Easy VRM button, or the panel opens with a yellow warning banner saying "VRM4U is not installed".
+**Symptom**: After enabling Easy VRM and restarting the editor, the toolbar shows no Easy VRM button, or the panel opens with a yellow warning banner saying "DYLO's VRM4U is required but not installed".
 
-**Cause**: The cold install of VRM4U either failed, was cancelled, or its source payload is missing.
+**Cause**: VRM4U is not installed in the project, or it is installed but disabled.
 
 **Fix**:
 
-1. Close the editor.
-2. Check that `<Project>\Plugins\EasyVRM\ThirdParty\VRM4U_Payload\` exists and contains a `VRM4U.uplugin`. If not, the plugin install is corrupt; re install Easy VRM from your marketplace library.
-3. Manually copy the `VRM4U_Payload` folder to `<Project>\Plugins\VRM4U` (sibling of EasyVRM, not nested).
-4. Relaunch the editor.
-
-You can also delete `<Project>\Plugins\VRM4U` entirely and relaunch; Easy VRM will detect the missing sibling and offer the install dialog again.
+1. Install **DYLO's VRM4U** (free) from Fab into the same project. Easy VRM is an editor layer on top of VRM4U and will not function without it.
+2. Open the **Plugins** window (`Edit` to `Plugins`) and confirm both **VRM4U** and **Easy VRM** are **Enabled**.
+3. Restart the editor.
+4. Confirm `<Project>\Plugins\VRM4U\` exists and contains a `VRM4U.uplugin`.
 
 ## Import fails silently with "Import task was cancelled"
 
 **Symptom**: The status row shows "Import task was cancelled" or no status update at all; the destination folder stays empty.
 
-**Cause**: This is a VRM4U issue when used programmatically. VRM4U's stock importer factory calls `FSlateApplication::Get().AddModalWindow` unconditionally, which UE auto cancels in automated import mode. Easy VRM uses automated import and requires a patched VRM4U.
+**Cause**: This can happen with older or third-party VRM4U builds whose importer factory calls `FSlateApplication::Get().AddModalWindow` unconditionally, which UE auto cancels in automated import mode. Easy VRM uses automated import.
 
-**Fix**: Easy VRM ships with a patched VRM4U as its payload. If you have a separate VRM4U install that you didn't get from Easy VRM, replace it with the version Easy VRM bundles:
+**Fix**: Use **DYLO's VRM4U** from Fab, which is the version validated against Easy VRM. If you installed a different VRM4U build manually, remove it and install DYLO's VRM4U from Fab instead:
 
 1. Close the editor.
-2. Delete `<Project>\Plugins\VRM4U`.
-3. Relaunch. Easy VRM offers to install its bundled VRM4U; click Install.
+2. Delete the manually installed `<Project>\Plugins\VRM4U`.
+3. Install DYLO's VRM4U from Fab and relaunch.
 
 ## Imported avatar appears with white clothing
 
@@ -88,15 +86,15 @@ If hair still jiggles after this, your `VrmMetaObject` may have hair chains with
 
 **Fix**:
 
-1. Check `<Project>\Saved\Logs\<Project>.log` for lines starting with `LogEasyVRMBootstrap:` and `LogPluginManager: Mounting Project plugin EasyVRM`.
-2. If you see `LogEasyVRMBootstrap: User declined VRM4U install`, you cancelled the install dialog. Relaunch and click Install.
-3. If you see `LogPluginManager: Mounting Project plugin VRM4U` followed by errors, your VRM4U sibling is broken; delete it and relaunch.
-4. If neither line appears, Easy VRM itself failed to mount. Re install Easy VRM from your marketplace library.
+1. Check `<Project>\Saved\Logs\<Project>.log` for `LogPluginManager: Mounting Project plugin VRM4U` and `LogPluginManager: Mounting Project plugin EasyVRM`.
+2. If VRM4U is not mounted, install DYLO's VRM4U from Fab and enable it; Easy VRM cannot load its editor module without VRM4U present.
+3. If you see `LogPluginManager: Mounting Project plugin VRM4U` followed by errors, your VRM4U install is broken; reinstall DYLO's VRM4U from Fab and relaunch.
+4. If neither plugin mounts, reinstall Easy VRM from your Fab library.
 
 ## Where to find logs
 
 - Project log: `<Project>\Saved\Logs\<Project>.log`
-- Easy VRM emits under category `LogEasyVRM` and `LogEasyVRMBootstrap`.
+- Easy VRM emits under category `LogEasyVRM`.
 - VRM4U emits under `LogVRM`, `LogVRM4UImporter`, and `LogVRM4U`.
 
 When reporting a bug, include the full project log with your reproduction steps.

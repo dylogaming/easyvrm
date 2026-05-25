@@ -11,7 +11,7 @@ Initial release.
 ### Added
 
 - Native, in editor VRM importer panel. Drag and drop or browse for `.vrm` files; pick a destination folder; click Import. Produces SkeletalMesh, Skeleton, IK Rig, IK Retargeter, MToon material instances, VrmMetaObject, and (optionally) a UE5 Mannequin renamed mesh variant.
-- Bundled VRM4U with cold install flow. The plugin ships with VRM4U inside its own folder and installs it as a sibling on first launch. No separate install step required.
+- Requires VRM4U as a dependency, available free on Fab as DYLO's VRM4U. Easy VRM declares it in its plugin descriptor so the marketplace installs it alongside. If VRM4U is missing, the panel shows a banner prompting you to install it from Fab.
 - Toolbar button and Window menu entry. Content Browser right click "Import VRM Here".
 - Material Tweaks section: per body group MToon parameters (Skin, Face Details, Eyes, Hair, Clothing, All Materials) with live persona preview. Color pickers and sliders for every relevant MToon parameter.
 - Style presets: five curated MToon shading scalar sets (Hard Cel, Soft Cel, Painterly, Realistic, Idol / Glow) that change the look without overwriting per character colors. Arrow key cycling through the list.
